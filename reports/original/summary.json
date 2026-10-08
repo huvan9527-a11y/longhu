@@ -1,9 +1,23 @@
 {
+  "start": "2026-10-08",
+  "end": "2026-10-08",
+  "sessions": 1,
+  "signals": 0,
+  "entries": 0,
+  "closed_trades": 0,
+  "open_trades": 0,
+  "total_return": 0.0,
+  "max_drawdown": 0.0,
+  "win_rate": null,
+  "mean_trade_return": null,
+  "profit_factor": null,
+  "average_exposure": 0.0,
+  "final_equity": 200000.0,
+  "corporate_action_trades": 0,
+  "partial_profit_trades": 0,
+  "reentry_entries": 0,
+  "reentry_signals": 0,
   "account": "original",
   "initial_cash": 200000,
-  "final_equity": 200000,
-  "total_return": 0,
-  "entries": 0,
-  "status": "waiting_for_first_session",
-  "start": "2026-10-08"
+  "execution": "daily_bar_proxy"
 }
