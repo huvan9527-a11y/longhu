@@ -1,0 +1,43 @@
+name: 龙虎榜双模拟仓
+on:
+  schedule:
+    - cron: '35 12,13 * * 1-5'
+  workflow_dispatch:
+  push:
+    paths: ['*.py', 'requirements.txt', 'config.json', '.github/workflows/paper.yml']
+permissions:
+  contents: write
+concurrency:
+  group: longhu-paper
+  cancel-in-progress: false
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Verify strategy
+        run: python -m unittest discover -s tests -v
+      - name: Update paper accounts
+        run: python run.py
+      - name: Persist immutable data and reports
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data reports
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update paper accounts [skip ci]'
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: paper-ledgers-${{ github.run_id }}
+          path: reports/

@@ -1,0 +1,9 @@
+{
+  "account": "original",
+  "initial_cash": 200000,
+  "final_equity": 200000,
+  "total_return": 0,
+  "entries": 0,
+  "status": "waiting_for_first_session",
+  "start": "2026-10-08"
+}
