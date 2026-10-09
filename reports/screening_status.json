@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-09",
+  "checked_at": "2026-10-09T19:40:03.217522+08:00",
+  "status": "provisional",
+  "price_source": "Eastmoney disclosure close and daily gain",
+  "execution": "screening_only_no_orders",
+  "signals": 1,
+  "disclosure_groups": 82,
+  "note": "两次抓取稳定且席位齐全；不代表全市场已完成发布，后续继续复查。"
+}

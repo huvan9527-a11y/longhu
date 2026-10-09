@@ -1,0 +1,2 @@
+﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
+2026-10-09,000420,吉林化纤,100422504,日涨幅偏离值达到7%的前5只证券,one_day,3,84530733.05,0.0,43561407.0,0.10115600000000002,True,single_institution_buy_gt20m_sell_zero
