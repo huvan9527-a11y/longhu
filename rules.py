@@ -29,8 +29,9 @@ def group_qualification(code,rows):
         total=sum(r['BUY'] for r in rows)
         return (True,total,'institution_buy_sum_gt20m') if total>20_000_000 else (False,None,'institution_buy_sum_not_gt20m')
     return False,None,'code_outside_scope'
-def screen(df,cutoff=None,write=True):
-    buy=json.load(open(ROOT/'BUY_institutions.json'));sell=json.load(open(ROOT/'SELL_institutions.json'))
+def screen(df,cutoff=None,write=True,buy=None,sell=None):
+    if buy is None:buy=json.load(open(ROOT/'BUY_institutions.json'))
+    if sell is None:sell=json.load(open(ROOT/'SELL_institutions.json'))
     seller_days=set()
     for r in sell:
         if r.get('OPERATEDEPT_NAME','').strip()=='机构专用':seller_days.add((r['TRADE_DATE'][:10],r['SECURITY_CODE']))
@@ -59,3 +60,4 @@ def screen(df,cutoff=None,write=True):
     if write:
         sig.to_csv(OUT/'qualified_signals.csv',index=False,encoding='utf-8-sig');pd.DataFrame(audit).to_csv(OUT/'screening_audit.csv',index=False,encoding='utf-8-sig')
     return sig,pd.DataFrame(audit)
+

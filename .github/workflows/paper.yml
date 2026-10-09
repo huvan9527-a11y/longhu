@@ -1,10 +1,10 @@
 name: 龙虎榜双模拟仓
 on:
   schedule:
-    - cron: '35 12,13 * * 1-5'
+    - cron: '10,40 9-13 * * 1-5'
   workflow_dispatch:
   push:
-    paths: ['*.py', 'requirements.txt', 'config.json', '.github/workflows/paper.yml']
+    paths: ['*.py', 'tests/**', 'requirements.txt', 'config.json', '.github/workflows/paper.yml']
 permissions:
   contents: write
 concurrency:
@@ -25,6 +25,21 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Verify strategy
         run: python -m unittest discover -s tests -v
+      - name: Screen today's fresh disclosures
+        id: screening
+        run: python preview.py
+      - name: Persist screening result or waiting status
+        if: always() && (steps.screening.outcome == 'success' || steps.screening.outcome == 'failure')
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in reports/current_signals.csv reports/screening_audit_latest.csv reports/screening_status.json reports/latest_signals.md; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update post-close screening [skip ci]'
+            git push origin HEAD:main
+          fi
       - name: Update paper accounts
         run: python run.py
       - name: Persist immutable data and reports
@@ -41,3 +56,4 @@ jobs:
         with:
           name: paper-ledgers-${{ github.run_id }}
           path: reports/
+

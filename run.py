@@ -60,9 +60,14 @@ def main():
     if not sessions:raise ValueError('Calendar unavailable')
     live=[d for d in sessions if d>=start]
     latest=sessions[-1]
-    # No intraday execution or signals from incomplete daily data.
+    # Screening runs separately after close; only the daily-bar ledger waits until evening.
     if latest==today and now.hour<20:
-        live=[d for d in live if d<today];sessions=[d for d in sessions if d<today];latest=sessions[-1]
+        message=f'账本等待晚间日线行情；今天 {today} 的选股见 reports/latest_signals.md。账本尚未处理今天，不代表今天无信号。'
+        print(message)
+        summary_path=os.environ.get('GITHUB_STEP_SUMMARY')
+        if summary_path:
+            with pathlib.Path(summary_path).open('a') as stream:stream.write('\n\n'+message+'\n')
+        return
     if not live:
         for name in ['original','reentry']:
             target=REPORT/name;target.mkdir(exist_ok=True)
@@ -74,17 +79,13 @@ def main():
         prices.package(date)
         if date not in live:continue
         snapshot=ROOT/'disclosures'/(date+'.json')
+        from preview import fetch_verified_snapshot, validate_snapshot, signature
         if not snapshot.exists():
-            overview=fetch_report('RPT_DAILYBILLBOARD_DETAILS',date)
-            if not overview:raise RuntimeError('Daily billboard is empty; cannot verify publication')
-            # Retrieve all seats, then filter institutions. Zero institution seats is valid;
-            # an empty whole-market endpoint is not treated as a published negative signal.
-            buy=fetch_report('RPT_BILLBOARD_DAILYDETAILSBUY',date)
-            sell=fetch_report('RPT_BILLBOARD_DAILYDETAILSSELL',date)
-            if not buy or not sell:raise RuntimeError('Seat disclosure incomplete')
-            known={r['SECURITY_CODE'] for r in overview}
-            if not known.issubset({r['SECURITY_CODE'] for r in buy}) or not known.issubset({r['SECURITY_CODE'] for r in sell}):raise RuntimeError('Missing disclosed stock seats')
-            save(snapshot,dict(date=date,overview=overview,buy=buy,sell=sell))
+            save(snapshot,fetch_verified_snapshot(date))
+        else:
+            frozen=validate_snapshot(json.loads(snapshot.read_text()))
+            if date==today and signature(frozen)!=signature(fetch_verified_snapshot(date)):
+                raise RuntimeError('Frozen disclosure changed; ledger update blocked for reconciliation: '+date)
     df=prepare(pd.concat([pd.read_csv(prices.ROOT/(d+'.csv'),dtype={'code':str}) for d in warm+live],ignore_index=True))
     snapshots=[json.loads((ROOT/'disclosures'/(d+'.json')).read_text()) for d in live]
     for side in ['BUY','SELL']:save(ROOT/(side+'_institutions.json'),[r for s in snapshots for r in s[side.lower()] if r.get('OPERATEDEPT_NAME','').strip()=='机构专用'])
@@ -92,10 +93,12 @@ def main():
     audit.to_csv(REPORT/'screening_audit.csv',index=False,encoding='utf-8-sig');signals.to_csv(REPORT/'signals.csv',index=False,encoding='utf-8-sig')
     summaries=[]
     for name,reentry in [('original',False),('reentry',True)]:summaries.append(export_account(name,engine.simulate(df,live,signals,reentry=reentry)))
-    text=f'# 龙虎榜双模拟仓\n\n最新交易日：{live[-1]}；各20万元独立账户。\n\n|方案|资产|累计收益|开仓笔数|\n|---|---:|---:|---:|\n'
+    text=f'# 龙虎榜双模拟仓\n\n[当日选股与检查状态](latest_signals.md)；[机器可读状态](screening_status.json)。\n\n账本最新交易日：{live[-1]}；各20万元独立账户。\n\n|方案|资产|累计收益|开仓笔数|\n|---|---:|---:|---:|\n'
     for s in summaries:text+=f"|{s['account']}|{s['final_equity']:,.2f}|{s['total_return']:.2%}|{s['entries']}|\n"
     text+='\n今晚确认信号，下一交易日开盘尝试成交；成交记录由次日晚间日线模拟。日线不能保证盘中成交顺序。除权除息影响持仓时停止更新并报错，等待核验，避免生成虚假股数。\n'
     (REPORT/'latest.md').write_text(text)
     summary_path=os.environ.get('GITHUB_STEP_SUMMARY')
-    if summary_path:pathlib.Path(summary_path).write_text(text)
+    if summary_path:
+        with pathlib.Path(summary_path).open('a') as stream:stream.write('\n\n'+text)
 if __name__=='__main__':main()
+

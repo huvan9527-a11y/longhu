@@ -2,7 +2,9 @@
 
 两个账户各20万元：`original` 原方案；`reentry` 原方案加止损后重新入场。2026-10-08开始向前模拟，不将历史回测收益带入账户。
 
-每个工作日北京时间 **20:35** 执行，**21:35** 补跑。GitHub可能延迟调度。榜单数据未公布完整时任务报错，不把缺失当作“无机构卖出”。历史行情与披露按日冻结，同日补跑不重复下单。休市期间不生成交易。
+每个工作日北京时间 **17:10起，每半小时复查一次，至21:40**。GitHub可能延迟调度。当天选股使用龙虎榜披露中的收盘价与当日涨幅，不依赖通达信日线包；每次重新抓取全部榜单和席位，检查每个独立披露的买卖席位数量，再间隔15秒抓取核对稳定性。早期结果属于初筛，不能保证全市场已经完成发布。数据不齐则报告“等待披露”，任务报错，不把缺失当作无信号。
+
+**选股与账本分开更新**：选股见 [当日选股](reports/latest_signals.md)、[当前信号](reports/current_signals.csv)、[检查状态](reports/screening_status.json)；模拟账本20点后才尝试获取完整日线包。提前手动运行也会筛选当天，账本明确标注等待晚间行情。历史行情与披露按日冻结，同日补跑不重复下单；当天已冻结披露若发生变化，阻止账本更新并报错，等待核对，避免悄悄漏信号或改写旧净值。休市期间不生成交易。
 
 查看 [最新报告](reports/latest.md)、[原方案账本](reports/original)、[重新入场账本](reports/reentry)、[Actions](../../actions)。各账户导出逐笔交易、每日资产、成交/未成交记录、事件及下一交易日开盘计划。
 
@@ -30,4 +32,5 @@
 
 首次自动运行会初始化账户。手动补跑在 Actions 的 Run workflow；重新执行使用冻结数据重算，并核对旧净值不被改写。运行失败保留上一次账本，在Actions查看错误。不要删除data或修改start_date以免重置账户。
 
-本地：`pip install -r requirements.txt`，`python -m unittest discover -s tests -v`，`python run.py`。
+本地：`pip install -r requirements.txt`，`python -m unittest discover -s tests -v`，先 `python preview.py` 筛选当日，再 `python run.py` 更新晚间账本。
+
