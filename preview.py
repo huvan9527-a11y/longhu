@@ -172,11 +172,21 @@ def validate_snapshot(snapshot):
                         dept = seat.get('OPERATEDEPT_NAME')
                         if not isinstance(dept, str) or not dept.strip():
                             raise ValueError('Missing seat identity: ' + side + ' ' + str(key))
+                        # Exchange disclosures differ: Shanghai buy-side SELL/NET
+                        # and sell-side BUY/NET may be undisclosed. Never
+                        # fabricate zero amounts; validate only decision inputs.
+                        required = (('BUY', 'SELL') if code.startswith('0') and side == 'buy'
+                                    else ('BUY',) if side == 'buy'
+                                    else ('SELL',))
                         for field in ('BUY', 'SELL', 'NET'):
                             value = seat.get(field)
-                            if not isinstance(value, (int, float)) or not math.isfinite(value):
-                                raise ValueError('Invalid seat ' + field + ': ' + side + ' ' + str(key))
-                        fingerprint = (seat.get('OPERATEDEPT_CODE'), dept, seat['BUY'], seat['SELL'], seat['NET'])
+                            if field in required or value is not None:
+                                if (isinstance(value, bool) or
+                                        not isinstance(value, (int, float)) or
+                                        not math.isfinite(value) or value < 0 and field != 'NET'):
+                                    raise ValueError('Invalid seat ' + field + ': ' + side + ' ' + str(key))
+                        fingerprint = (seat.get('OPERATEDEPT_CODE'), dept,
+                                       seat.get('BUY'), seat.get('SELL'), seat.get('NET'))
                         if fingerprint in fingerprints:
                             raise ValueError('Duplicate seat row: ' + side + ' ' + str(key))
                         fingerprints.add(fingerprint)

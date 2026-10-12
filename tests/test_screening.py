@@ -80,6 +80,40 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(filtered['skipped'][0]['code'], '600111')
         self.assertEqual(filtered['skipped'][0]['stage'], 'scope')
 
+    def test_shanghai_buy_missing_sell_and_net_is_valid(self):
+        sh = fixture('600127', '金健米业')
+        for row in sh['buy']:
+            row['SELL'] = None
+            row['NET'] = None
+        for row in sh['sell']:
+            row['BUY'] = None
+            row['NET'] = None
+        filtered = preview.validate_snapshot(sh)
+        self.assertEqual(filtered['skipped'], [])
+        signals, _ = preview.screen_snapshot(filtered)
+        self.assertEqual(signals.code.tolist(), ['600127'])
+
+    def test_shenzhen_buy_missing_sell_remains_invalid(self):
+        sz = fixture()
+        sz['buy'][2]['SELL'] = None
+        filtered = preview.validate_snapshot(sz)
+        self.assertFalse(filtered['overview'])
+        self.assertIn('Invalid seat SELL', filtered['skipped'][0]['reason'])
+
+    def test_shanghai_missing_required_buy_is_invalid(self):
+        sh = fixture('600127', '金健米业')
+        sh['buy'][2]['BUY'] = None
+        filtered = preview.validate_snapshot(sh)
+        self.assertFalse(filtered['overview'])
+        self.assertIn('Invalid seat BUY', filtered['skipped'][0]['reason'])
+
+    def test_missing_sell_side_amount_is_invalid(self):
+        sh = fixture('600127', '金健米业')
+        sh['sell'][0]['SELL'] = None
+        filtered = preview.validate_snapshot(sh)
+        self.assertFalse(filtered['overview'])
+        self.assertIn('Invalid seat SELL', filtered['skipped'][0]['reason'])
+
     def test_one_bad_one_good(self):
         bad = fixture('600111', '测试沪股')
         bad['sell'].pop()
