@@ -1,2 +1,2 @@
-﻿signal_date,order_date,code,status
-2026-10-09,,000420,no_next_session_in_window
+﻿signal_date,order_date,code,status,account_assets_before_order,investment,investment_ratio,is_reentry,reentry_parent_buy_date,reentry_parent_exit_date
+2026-10-09,2026-10-12,000420,filled_daily_bar_proxy,200000.0,66496.39296299998,0.33248196481499986,False,,
