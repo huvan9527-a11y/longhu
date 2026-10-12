@@ -35,12 +35,16 @@ def prepare(df):
     df['volume_mean_prev5']=df.groupby('code').volume.transform(lambda x:x.shift(1).rolling(5,min_periods=5).mean())
     return df
 
-def export_account(name,result):
+def export_account(name,result,reconciled_date=None):
     trades,equity,orders,events,summary=result;target=REPORT/name;target.mkdir(parents=True,exist_ok=True)
     old=target/'equity.csv'
     if old.exists():
         previous=pd.read_csv(old)
         if len(previous):
+            # An explicitly audited same-day disclosure correction may change today's
+            # simulated equity, never any earlier trading session.
+            if reconciled_date:
+                previous=previous[previous.date.astype(str)<reconciled_date]
             check=equity.set_index('date').reindex(previous.date)
             if not np.allclose(previous.equity,check.equity,atol=.01,rtol=0):raise ValueError('Historical ledger changed: '+name)
     for filename,frame in [('trades',trades),('equity',equity),('orders',orders),('events',events)]:frame.to_csv(target/(filename+'.csv'),index=False,encoding='utf-8-sig')
@@ -75,6 +79,7 @@ def main():
         (REPORT/'latest.md').write_text(f'# 龙虎榜双模拟仓\n\n启动日：{start}。行情最新日期：{latest}。尚无启动后的交易日。\n\n原方案：200,000.00元；重新入场方案：200,000.00元。\n')
         return
     warm=sessions[max(0,sessions.index(live[0])-6):sessions.index(live[0])]
+    reconciled_date=None
     for date in warm+live:
         prices.package(date)
         if date not in live:continue
@@ -84,15 +89,32 @@ def main():
             save(snapshot,fetch_verified_snapshot(date))
         else:
             frozen=validate_snapshot(json.loads(snapshot.read_text()))
-            if date==today and signature(frozen)!=signature(fetch_verified_snapshot(date)):
-                raise RuntimeError('Frozen disclosure changed; ledger update blocked for reconciliation: '+date)
+            if date==today:
+                fresh=fetch_verified_snapshot(date)
+                if signature(frozen)!=signature(fresh):
+                    # Only the current session can be reconciled. Preserve the
+                    # original immutable snapshot and never silently rewrite it.
+                    backup=ROOT/'disclosures'/(date+'.pre_reconciliation.json')
+                    if backup.exists():
+                        raise RuntimeError('Disclosure changed again after reconciliation; manual review required: '+date)
+                    save(backup,frozen)
+                    save(snapshot,fresh)
+                    save(REPORT/'disclosure_reconciliation.json',dict(
+                        date=date,previous_overview=len(frozen['overview']),
+                        corrected_overview=len(fresh['overview']),
+                        previous_skipped=len(frozen.get('skipped',[])),
+                        corrected_skipped=len(fresh.get('skipped',[])),
+                        original_backup=str(backup),
+                        reason='Same-day exchange-field compatibility correction',
+                        historical_sessions_must_remain_unchanged=True))
+                    reconciled_date=date
     df=prepare(pd.concat([pd.read_csv(prices.ROOT/(d+'.csv'),dtype={'code':str}) for d in warm+live],ignore_index=True))
     snapshots=[validate_snapshot(json.loads((ROOT/'disclosures'/(d+'.json')).read_text())) for d in live]
     for side in ['BUY','SELL']:save(ROOT/(side+'_institutions.json'),[r for s in snapshots for r in s[side.lower()] if r.get('OPERATEDEPT_NAME','').strip()=='机构专用'])
     signals,audit=rules.screen(df,write=False)
     audit.to_csv(REPORT/'screening_audit.csv',index=False,encoding='utf-8-sig');signals.to_csv(REPORT/'signals.csv',index=False,encoding='utf-8-sig')
     summaries=[]
-    for name,reentry in [('original',False),('reentry',True)]:summaries.append(export_account(name,engine.simulate(df,live,signals,reentry=reentry)))
+    for name,reentry in [('original',False),('reentry',True)]:summaries.append(export_account(name,engine.simulate(df,live,signals,reentry=reentry),reconciled_date=reconciled_date))
     text=f'# 龙虎榜双模拟仓\n\n[当日选股与检查状态](latest_signals.md)；[机器可读状态](screening_status.json)。\n\n账本最新交易日：{live[-1]}；各20万元独立账户。\n\n|方案|资产|累计收益|开仓笔数|\n|---|---:|---:|---:|\n'
     for s in summaries:text+=f"|{s['account']}|{s['final_equity']:,.2f}|{s['total_return']:.2%}|{s['entries']}|\n"
     text+='\n今晚确认信号，下一交易日开盘尝试成交；成交记录由次日晚间日线模拟。日线不能保证盘中成交顺序。除权除息影响持仓时停止更新并报错，等待核验，避免生成虚假股数。\n'
