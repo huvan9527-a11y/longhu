@@ -1,10 +1,8 @@
 {
-  "date": "2026-10-09",
-  "checked_at": "2026-10-09T21:53:33.929317+08:00",
-  "status": "provisional",
+  "date": "2026-10-12",
+  "checked_at": "2026-10-12T17:28:01.934690+08:00",
+  "status": "waiting_for_disclosure",
   "price_source": "Eastmoney disclosure close and daily gain",
   "execution": "screening_only_no_orders",
-  "signals": 1,
-  "disclosure_groups": 82,
-  "note": "两次抓取稳定且席位齐全；不代表全市场已完成发布，后续继续复查。"
+  "error": "Unverified seat count: sell ('200056', '100423407', '137001002002001', '日跌幅偏离值达到7%的前5只证券')"
 }
