@@ -21,7 +21,7 @@ def fetch_report(report,date,institutions=False):
         if page>=result['pages']:break
         page+=1;time.sleep(1.3)
     if len(rows)!=expected:raise RuntimeError('Incomplete disclosure pagination')
-    if any(r['TRADE_DATE'][:10]!=date for r in rows):raise RuntimeError('Incorrect disclosure date')
+    # Individual date/identity defects are quarantined in preview.validate_snapshot.
     return rows
 
 def prepare(df):
@@ -87,7 +87,7 @@ def main():
             if date==today and signature(frozen)!=signature(fetch_verified_snapshot(date)):
                 raise RuntimeError('Frozen disclosure changed; ledger update blocked for reconciliation: '+date)
     df=prepare(pd.concat([pd.read_csv(prices.ROOT/(d+'.csv'),dtype={'code':str}) for d in warm+live],ignore_index=True))
-    snapshots=[json.loads((ROOT/'disclosures'/(d+'.json')).read_text()) for d in live]
+    snapshots=[validate_snapshot(json.loads((ROOT/'disclosures'/(d+'.json')).read_text())) for d in live]
     for side in ['BUY','SELL']:save(ROOT/(side+'_institutions.json'),[r for s in snapshots for r in s[side.lower()] if r.get('OPERATEDEPT_NAME','').strip()=='机构专用'])
     signals,audit=rules.screen(df,write=False)
     audit.to_csv(REPORT/'screening_audit.csv',index=False,encoding='utf-8-sig');signals.to_csv(REPORT/'signals.csv',index=False,encoding='utf-8-sig')

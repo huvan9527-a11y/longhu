@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          for file in reports/current_signals.csv reports/screening_audit_latest.csv reports/screening_status.json reports/latest_signals.md; do
+          for file in reports/current_signals.csv reports/screening_audit_latest.csv reports/screening_status.json reports/latest_signals.md reports/skipped_stocks.csv; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
           if ! git diff --cached --quiet; then
