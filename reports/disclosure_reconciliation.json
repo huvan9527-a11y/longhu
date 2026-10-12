@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "previous_overview": 25,
+  "corrected_overview": 62,
+  "previous_skipped": 48,
+  "corrected_skipped": 18,
+  "original_backup": "data/disclosures/2026-10-12.pre_reconciliation.json",
+  "reason": "Same-day exchange-field compatibility correction",
+  "historical_sessions_must_remain_unchanged": true
+}
