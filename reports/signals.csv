@@ -1,3 +1,5 @@
 ﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
 2026-10-09,000420,吉林化纤,100422504,日涨幅偏离值达到7%的前5只证券,one_day,3,84530733.05,0.0,43561407.0,0.10115606936416177,True,single_institution_buy_gt20m_sell_zero
 2026-10-12,601595,上海电影,100423994,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,3,96555394.36,,96555394.36,0.09983831851253044,True,institution_buy_sum_gt20m
+2026-10-13,605058,澳弘电子,100424787,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,67114169.6,,67114169.6,0.10000000000000009,True,institution_buy_sum_gt20m
+2026-10-13,688655,迅捷兴,100424774,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,1,49736193.83,,49736193.83,0.2000339040515342,True,institution_buy_sum_gt20m
