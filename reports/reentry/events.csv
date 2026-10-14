@@ -1,2 +1,3 @@
-﻿date,code,event,phase,shares,fill_price,value,fees,buy_date,reason
-2026-10-13,000420,final_exit,intraday_daily_bar_proxy,16200.0,3.6899963099999993,59777.94022199999,8.966691033299998,2026-10-12,intraday_10pct_stop
+﻿date,code,event,phase,shares,fill_price,value,fees,buy_date,reason,new_stop
+2026-10-13,000420,final_exit,intraday_daily_bar_proxy,16200.0,3.6899963099999993,59777.94022199999,8.966691033299998,2026-10-12,intraday_10pct_stop,
+2026-10-14,601595,half_profit_taken,intraday_daily_bar_proxy,1200.0,28.286971712999996,33944.36605559999,5.091654908339998,2026-10-13,,25.688779658046755
