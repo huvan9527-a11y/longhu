@@ -1,19 +1,18 @@
 ﻿date,code,name,reason,stage
-2026-10-13,002667,*ST威领,ST security excluded,scope
-2026-10-13,300107,建新股份,code_outside_scope,scope
-2026-10-13,301010,晶雪节能,code_outside_scope,scope
-2026-10-13,301030,*ST仕净,code_outside_scope,scope
-2026-10-13,301041,金百泽,code_outside_scope,scope
-2026-10-13,301052,果麦文化,code_outside_scope,scope
-2026-10-13,301139,元道退,code_outside_scope,scope
-2026-10-13,301513,尚水智能,code_outside_scope,scope
-2026-10-13,301583,托伦斯,code_outside_scope,scope
-2026-10-13,301655,绿控传动,code_outside_scope,scope
-2026-10-13,301660,粤芯半导体,code_outside_scope,scope
-2026-10-13,301689,电科思仪,code_outside_scope,scope
-2026-10-13,603008,ST喜临门,ST security excluded,scope
-2026-10-13,920157,宇特光电,code_outside_scope,scope
-2026-10-13,920298,腾信精密,code_outside_scope,scope
-2026-10-13,920627,力王股份,code_outside_scope,scope
-2026-10-13,920779,武汉蓝电,code_outside_scope,scope
-2026-10-13,920895,花溪科技,code_outside_scope,scope
+2026-10-14,300006,莱美药业,code_outside_scope,scope
+2026-10-14,300107,建新股份,code_outside_scope,scope
+2026-10-14,300299,富春股份,code_outside_scope,scope
+2026-10-14,300338,*ST开元,code_outside_scope,scope
+2026-10-14,300853,申昊科技,code_outside_scope,scope
+2026-10-14,301010,晶雪节能,code_outside_scope,scope
+2026-10-14,301052,果麦文化,code_outside_scope,scope
+2026-10-14,301132,满坤科技,code_outside_scope,scope
+2026-10-14,301139,元道退,code_outside_scope,scope
+2026-10-14,301513,尚水智能,code_outside_scope,scope
+2026-10-14,301689,电科思仪,code_outside_scope,scope
+2026-10-14,301697,贝特利,code_outside_scope,scope
+2026-10-14,920021,流金科技,code_outside_scope,scope
+2026-10-14,920066,科拜尔,code_outside_scope,scope
+2026-10-14,920157,宇特光电,code_outside_scope,scope
+2026-10-14,920627,力王股份,code_outside_scope,scope
+2026-10-14,920779,武汉蓝电,code_outside_scope,scope

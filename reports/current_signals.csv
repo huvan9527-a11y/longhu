@@ -1,3 +1,2 @@
 ﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
-2026-10-13,605058,澳弘电子,100424787,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,67114169.6,,67114169.6,0.10000000000000009,True,institution_buy_sum_gt20m
-2026-10-13,688655,迅捷兴,100424774,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,1,49736193.83,,49736193.83,0.20003400000000005,True,institution_buy_sum_gt20m
+2026-10-14,600391,航发科技,100425614,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,66331960.0,,66331960.0,0.10005200000000003,True,institution_buy_sum_gt20m
