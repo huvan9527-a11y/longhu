@@ -1,21 +1,21 @@
 ﻿date,code,name,reason,stage
-2026-10-16,002667,*ST威领,ST security excluded,scope
-2026-10-16,300006,莱美药业,code_outside_scope,scope
-2026-10-16,300045,华力创通,code_outside_scope,scope
-2026-10-16,300111,向日葵,code_outside_scope,scope
-2026-10-16,300411,金盾股份,code_outside_scope,scope
-2026-10-16,300581,晨曦航空,code_outside_scope,scope
-2026-10-16,300681,英搏尔,code_outside_scope,scope
-2026-10-16,301002,崧盛股份,code_outside_scope,scope
-2026-10-16,301052,果麦文化,code_outside_scope,scope
-2026-10-16,301139,元道退,code_outside_scope,scope
-2026-10-16,301345,涛涛车业,code_outside_scope,scope
-2026-10-16,301513,尚水智能,code_outside_scope,scope
-2026-10-16,301520,万邦医药,code_outside_scope,scope
-2026-10-16,301586,佳力奇,code_outside_scope,scope
-2026-10-16,920006,晟楠科技,code_outside_scope,scope
-2026-10-16,920157,宇特光电,code_outside_scope,scope
-2026-10-16,920162,莫森泰克,code_outside_scope,scope
-2026-10-16,920201,百瑞吉,code_outside_scope,scope
-2026-10-16,920690,捷众科技,code_outside_scope,scope
-2026-10-16,920779,武汉蓝电,code_outside_scope,scope
+2026-10-19,002667,*ST威领,ST security excluded,scope
+2026-10-19,300411,金盾股份,code_outside_scope,scope
+2026-10-19,300798,锦鸡股份,code_outside_scope,scope
+2026-10-19,300852,四会富仕,code_outside_scope,scope
+2026-10-19,301052,果麦文化,code_outside_scope,scope
+2026-10-19,301139,元道退,code_outside_scope,scope
+2026-10-19,301230,泓博医药,code_outside_scope,scope
+2026-10-19,301313,凡拓数创,code_outside_scope,scope
+2026-10-19,301513,尚水智能,code_outside_scope,scope
+2026-10-19,301591,肯特股份,code_outside_scope,scope
+2026-10-19,301666,大普微,code_outside_scope,scope
+2026-10-19,600537,*ST亿晶,ST security excluded,scope
+2026-10-19,688121,*ST卓然,ST security excluded,scope
+2026-10-19,920006,晟楠科技,code_outside_scope,scope
+2026-10-19,920157,宇特光电,code_outside_scope,scope
+2026-10-19,920162,莫森泰克,code_outside_scope,scope
+2026-10-19,920196,南方乳业,code_outside_scope,scope
+2026-10-19,920690,捷众科技,code_outside_scope,scope
+2026-10-19,002724,海洋王,"Unverified seat count: sell ('002724', '100427386', '137001002001002', '连续三个交易日内，涨幅偏离值累计达到20%的证券')",seats
+2026-10-19,600860,京城股份,"Unverified seat count: sell ('600860', '100427921', '137001002001002', '非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券')",seats
