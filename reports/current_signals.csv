@@ -1,1 +1,6 @@
-﻿date,code,qualifying_amount
+﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
+2026-10-20,603626,科森科技,100428904,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,57944168.0,,57944168.0,0.09995500000000002,True,institution_buy_sum_gt20m
+2026-10-20,688018,乐鑫科技,100428774,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,3,346765482.6,,346765482.6,0.16857699999999998,True,institution_buy_sum_gt20m
+2026-10-20,688360,德马科技,100428781,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,1,33549949.28,,33549949.28,0.1699679999999999,True,institution_buy_sum_gt20m
+2026-10-20,688507,索辰科技,100428780,有价格涨跌幅限制的连续3个交易日内收盘价格涨幅偏离值累计达到30%的证券,multi_day,1,81308244.38,,81308244.38,0.130984,True,institution_buy_sum_gt20m
+2026-10-20,688836,宇树科技,100428776,有价格涨跌幅限制的连续3个交易日内收盘价格涨幅偏离值累计达到30%的证券,multi_day,1,159349590.21,,159349590.21,0.060715000000000074,True,institution_buy_sum_gt20m
