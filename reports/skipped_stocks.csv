@@ -1,17 +1,23 @@
 ﻿date,code,name,reason,stage
-2026-10-21,300006,莱美药业,code_outside_scope,scope
-2026-10-21,300007,汉威科技,code_outside_scope,scope
-2026-10-21,300115,长盈精密,code_outside_scope,scope
-2026-10-21,300296,利亚德,code_outside_scope,scope
-2026-10-21,301052,果麦文化,code_outside_scope,scope
-2026-10-21,301102,兆讯传媒,code_outside_scope,scope
-2026-10-21,301139,元道退,code_outside_scope,scope
-2026-10-21,301159,三维天地,code_outside_scope,scope
-2026-10-21,301313,凡拓数创,code_outside_scope,scope
-2026-10-21,301486,致尚科技,code_outside_scope,scope
-2026-10-21,301591,肯特股份,code_outside_scope,scope
-2026-10-21,688121,*ST卓然,ST security excluded,scope
-2026-10-21,920096,嘉晨智能,code_outside_scope,scope
-2026-10-21,920157,宇特光电,code_outside_scope,scope
-2026-10-21,920162,莫森泰克,code_outside_scope,scope
-2026-10-21,920196,南方乳业,code_outside_scope,scope
+2026-10-22,300296,利亚德,code_outside_scope,scope
+2026-10-22,300839,博汇股份,code_outside_scope,scope
+2026-10-22,301023,奕帆传动,code_outside_scope,scope
+2026-10-22,301052,果麦文化,code_outside_scope,scope
+2026-10-22,301139,元道退,code_outside_scope,scope
+2026-10-22,301190,善水科技,code_outside_scope,scope
+2026-10-22,301227,森鹰窗业,code_outside_scope,scope
+2026-10-22,301313,凡拓数创,code_outside_scope,scope
+2026-10-22,301413,安培龙,code_outside_scope,scope
+2026-10-22,301502,华阳智能,code_outside_scope,scope
+2026-10-22,301563,云汉芯城,code_outside_scope,scope
+2026-10-22,301569,联亚药业,code_outside_scope,scope
+2026-10-22,301591,肯特股份,code_outside_scope,scope
+2026-10-22,301686,中塑股份,code_outside_scope,scope
+2026-10-22,301718,通则康威,code_outside_scope,scope
+2026-10-22,600537,*ST亿晶,ST security excluded,scope
+2026-10-22,688121,*ST卓然,ST security excluded,scope
+2026-10-22,920096,嘉晨智能,code_outside_scope,scope
+2026-10-22,920157,宇特光电,code_outside_scope,scope
+2026-10-22,920196,南方乳业,code_outside_scope,scope
+2026-10-22,920229,世纪数码,code_outside_scope,scope
+2026-10-22,920296,文峰光电,code_outside_scope,scope

@@ -1,4 +1,1 @@
-﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
-2026-10-21,603236,移远通信,100429662,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,144245951.13,,144245951.13,0.09998700000000005,True,institution_buy_sum_gt20m
-2026-10-21,603341,龙旗科技,100429659,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,1,67911963.0,,67911963.0,0.0535810000000001,True,institution_buy_sum_gt20m
-2026-10-21,688500,慧辰股份,100429657,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,1,22489759.07,,22489759.07,0.19999999999999996,True,institution_buy_sum_gt20m
+﻿date,code,qualifying_amount
