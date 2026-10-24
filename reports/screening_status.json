@@ -1,11 +1,8 @@
 {
-  "date": "2026-10-23",
-  "checked_at": "2026-10-23T22:11:46.267155+08:00",
-  "status": "provisional",
+  "date": "2026-10-24",
+  "checked_at": "2026-10-24T09:41:49.070675+08:00",
+  "status": "waiting_for_disclosure",
   "price_source": "Eastmoney disclosure close and daily gain",
   "execution": "screening_only_no_orders",
-  "signals": 2,
-  "disclosure_groups": 68,
-  "skipped_stocks": 21,
-  "note": "两次原始抓取稳定；异常证券已隔离，不代表全市场已完成发布。"
+  "error": "Disclosure not available: RPT_DAILYBILLBOARD_DETAILS 2026-10-24 {'version': None, 'result': None, 'success': False, 'message': '返回数据为空', 'code': 9201}"
 }
