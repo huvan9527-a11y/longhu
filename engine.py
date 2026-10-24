@@ -1,5 +1,5 @@
 from rules import *
-def simulate(df,dates,sig,fixed_budget=None,reentry=False):
+def simulate(df,dates,sig,fixed_budget=None,reentry=False,next_day_exit_from=None):
     evaluation=[d for d in dates if d>='2026-01-01'];idx={d:i for i,d in enumerate(evaluation)}
     market={d:z.set_index('code',drop=False).to_dict('index') for d,z in df.groupby('date')};signals={d:z.to_dict('records') for d,z in sig.groupby('date')}
     cash=INITIAL;active={};trades=[];equity=[];orders=[];events=[];watches=[]
@@ -33,10 +33,12 @@ def simulate(df,dates,sig,fixed_budget=None,reentry=False):
         close(code,date,r,price,'breakeven_stop' if p['partial_shares'] else 'intraday_10pct_stop',phase)
     for i,date in enumerate(evaluation):
         day=market[date];sold_open=set()
+        next_day_exit = next_day_exit_from is not None and date >= next_day_exit_from
         for code in list(active):
             p=active[code];r=day.get(code)
             if not r or r['open']<=0 or r['volume']<=0:continue
             if abs(r['factor']/p['entry_factor']-1)>1e-6:raise ValueError('Held stock corporate action requires verification: '+code+' '+date)
+            if next_day_exit:continue  # New rule exits only at the next sellable close.
             if p.get('pending') or r['adj_open']<=p['stop']:
                 if at_limit(r,'down'):
                     p['pending']=p.get('pending') or 'gap_stop_blocked';event(date,code,'exit_blocked_at_open_limit_down');continue
@@ -68,10 +70,22 @@ def simulate(df,dates,sig,fixed_budget=None,reentry=False):
         for code in list(active):
             p=active[code];r=day.get(code)
             if not r or r['open']<=0 or r['volume']<=0:
-                if i-p['entry_index']>=9:p['pending']=p.get('pending') or 'day10_exit_delayed_suspension'
+                if next_day_exit and i>p['entry_index']:
+                    p['pending']='next_day_close_exit_delayed_suspension'
+                    event(date,code,'next_day_close_exit_delayed_suspension')
+                elif i-p['entry_index']>=9:p['pending']=p.get('pending') or 'day10_exit_delayed_suspension'
                 continue
             p['last_close']=r['adj_close'];p['last_factor']=r['factor']
             if abs(r['factor']/p['entry_factor']-1)>1e-6:raise ValueError('Held stock corporate action requires verification: '+code+' '+date)
+            if next_day_exit:
+                if i == p['entry_index']:continue  # T+1: never sell on the purchase day.
+                lower=price_limit(r,False)
+                if lower is not None and r['close']<=lower+.005:
+                    p['pending']='next_day_close_exit_blocked_limit_down'
+                    event(date,code,'next_day_close_exit_blocked_limit_down')
+                else:
+                    close(code,date,r,r['adj_close'],'next_day_close_exit','close_auction_proxy')
+                continue
             if i==p['entry_index']:
                 if r['adj_low']<=p['stop']:
                     p['pending']='buy_day_stop_locked_Tplus1';p['stop_locked_on']=date;event(date,code,'buy_day_10pct_stop_triggered_locked_Tplus1')
@@ -89,7 +103,7 @@ def simulate(df,dates,sig,fixed_budget=None,reentry=False):
                     p['pending']='day10_exit_blocked_limit_down';event(date,code,'day10_close_exit_blocked')
                 else:close(code,date,r,r['adj_close'],'day10_close_exit','close_auction_proxy')
         # Reentry candidates are evaluated only after today's close, never using next-day prices.
-        if reentry:
+        if reentry and not next_day_exit:
             for watch in watches:
                 age=i-watch['exit_index'];code=watch['code'];r=day.get(code)
                 if watch['consumed'] or age<=0:continue
@@ -121,3 +135,4 @@ def simulate(df,dates,sig,fixed_budget=None,reentry=False):
     summary=dict(start=evaluation[0],end=evaluation[-1],sessions=len(evaluation),signals=len(sig),entries=len(tr),closed_trades=len(closed),open_trades=len(tr)-len(closed),total_return=eq.iloc[-1].nav-1,max_drawdown=eq.drawdown.min(),win_rate=float((closed.pnl>0.01).mean()) if len(closed) else None,mean_trade_return=float(closed.net_return.mean()) if len(closed) else None,profit_factor=float(positive/negative) if negative else None,average_exposure=eq.exposure.mean(),final_equity=eq.iloc[-1].equity,corporate_action_trades=int(tr.corporate_action_proxy.sum()) if len(tr) else 0,partial_profit_trades=int((tr.partial_shares>0).sum()) if len(tr) else 0)
     summary.update(reentry_entries=int(tr.is_reentry.sum()) if len(tr) else 0,reentry_signals=int((ev.event=='reentry_signal_confirmed').sum()) if len(ev) else 0)
     return tr,eq,order,ev,summary
+

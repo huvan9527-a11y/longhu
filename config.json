@@ -1,1 +1,6 @@
-{"start_date":"2026-10-08","initial_cash":200000,"timezone":"Asia/Shanghai"}
+{
+  "start_date": "2026-10-08",
+  "initial_cash": 200000,
+  "timezone": "Asia/Shanghai",
+  "next_day_exit_from": "2026-10-26"
+}

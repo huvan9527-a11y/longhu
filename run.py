@@ -114,13 +114,15 @@ def main():
     signals,audit=rules.screen(df,write=False)
     audit.to_csv(REPORT/'screening_audit.csv',index=False,encoding='utf-8-sig');signals.to_csv(REPORT/'signals.csv',index=False,encoding='utf-8-sig')
     summaries=[]
-    for name,reentry in [('original',False),('reentry',True)]:summaries.append(export_account(name,engine.simulate(df,live,signals,reentry=reentry),reconciled_date=reconciled_date))
+    for name,reentry in [('original',False),('reentry',True)]:summaries.append(export_account(name,engine.simulate(df,live,signals,reentry=reentry,next_day_exit_from=config['next_day_exit_from']),reconciled_date=reconciled_date))
     text=f'# 龙虎榜双模拟仓\n\n[当日选股与检查状态](latest_signals.md)；[机器可读状态](screening_status.json)。\n\n账本最新交易日：{live[-1]}；各20万元独立账户。\n\n|方案|资产|累计收益|开仓笔数|\n|---|---:|---:|---:|\n'
     for s in summaries:text+=f"|{s['account']}|{s['final_equity']:,.2f}|{s['total_return']:.2%}|{s['entries']}|\n"
+    text+=f"\n从{config['next_day_exit_from']}起，两仓统一买入后的下一交易日收盘全卖；停牌或收盘跌停顺延。生效前历史不改写，存量持仓在生效日收盘退出。\n"
     text+='\n今晚确认信号，下一交易日开盘尝试成交；成交记录由次日晚间日线模拟。日线不能保证盘中成交顺序。除权除息影响持仓时停止更新并报错，等待核验，避免生成虚假股数。\n'
     (REPORT/'latest.md').write_text(text)
     summary_path=os.environ.get('GITHUB_STEP_SUMMARY')
     if summary_path:
         with pathlib.Path(summary_path).open('a') as stream:stream.write('\n\n'+text)
 if __name__=='__main__':main()
+
 

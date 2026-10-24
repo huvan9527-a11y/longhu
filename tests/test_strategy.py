@@ -27,6 +27,28 @@ class StrategyTests(unittest.TestCase):
  def test_reentry(self):
   df,dates,sig=fixture({2:dict(low=9.,high=10.),3:dict(close=10.2,high=10.3,volume=2000000),4:dict(open=10.2,close=10.2,high=10.3,low=10.1),5:dict(low=8.9,high=10.2),6:dict(close=10.4,high=10.5,volume=4000000)})
   tr,*_=s.simulate(df,dates,sig,reentry=True);self.assertEqual(len(tr),2);self.assertEqual(tr.is_reentry.sum(),1);self.assertEqual(tr[tr.is_reentry].iloc[0].buy_date,dates[4])
+ def test_new_policy_exits_next_session_close_for_both_accounts(self):
+  df,dates,sig=fixture({1:dict(low=8.8),2:dict(open=10.5,high=11.,low=8.8,close=10.2)})
+  for reentry in (False,True):
+   tr,eq,o,ev,summary=s.simulate(df,dates,sig,reentry=reentry,next_day_exit_from=dates[0])
+   self.assertEqual(len(tr),1)
+   self.assertEqual(tr.iloc[0].sell_date,dates[2])
+   self.assertEqual(tr.iloc[0].holding_sessions,2)
+   self.assertEqual(tr.iloc[0].exit_reason,'next_day_close_exit')
+   self.assertAlmostEqual(tr.iloc[0].sell_price,10.2*(1-s.SLIP))
+   self.assertEqual(tr.iloc[0].partial_shares,0)
+   self.assertEqual(summary['reentry_entries'],0)
+ def test_new_policy_preserves_prior_equity_and_exits_existing_holdings(self):
+  df,dates,sig=fixture({2:dict(high=10.7,low=10.,close=10.5)})
+  old=s.simulate(df,dates,sig)
+  new=s.simulate(df,dates,sig,next_day_exit_from=dates[5])
+  pd.testing.assert_frame_equal(old[1].iloc[:5],new[1].iloc[:5])
+  self.assertEqual(new[0].iloc[0].sell_date,dates[5])
+ def test_new_policy_defers_limit_down_and_suspension(self):
+  df,dates,sig=fixture({2:dict(open=9.,close=9.,high=9.,low=9.),3:dict(volume=0),4:dict(close=9.5)})
+  tr,*_=s.simulate(df,dates,sig,next_day_exit_from=dates[0])
+  self.assertEqual(tr.iloc[0].sell_date,dates[4])
+  self.assertEqual(tr.iloc[0].exit_reason,'next_day_close_exit')
  def test_empty_signals(self):
   df,dates,_=fixture();sig=pd.DataFrame(columns=['date','code','qualifying_amount']);tr,eq,*_=s.simulate(df,dates,sig,reentry=True);self.assertEqual(eq.iloc[-1].equity,200000);self.assertEqual(len(tr),0)
  def test_individual_threshold(self):
@@ -36,3 +58,4 @@ class StrategyTests(unittest.TestCase):
   df,dates,sig=fixture();df.loc[2,'factor']=1.4
   with self.assertRaisesRegex(ValueError,'corporate action'):s.simulate(df,dates,sig)
 if __name__=='__main__':unittest.main()
+
