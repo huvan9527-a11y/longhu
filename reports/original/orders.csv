@@ -15,4 +15,6 @@
 2026-10-21,2026-10-22,688500,cash_below_minimum_order,,,,False,,
 2026-10-23,2026-10-26,688836,cash_below_minimum_order,,,,False,,
 2026-10-23,2026-10-26,603728,filled_daily_bar_proxy,190340.83102995437,58777.52530649999,0.30880145362636374,False,,
-2026-10-26,,688836,no_next_session_in_window,,,,,,
+2026-10-26,2026-10-27,688836,cash_below_minimum_order,,,,False,,
+2026-10-27,,002093,no_next_session_in_window,,,,,,
+2026-10-27,,688306,no_next_session_in_window,,,,,,
