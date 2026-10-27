@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 import rules
-from run import fetch_report
+from run import fetch_report, completed_sessions
 
 REPORT = pathlib.Path('reports')
 SKIPPED_COLUMNS = ['date', 'code', 'name', 'reason', 'stage']
@@ -318,7 +318,7 @@ if __name__ == '__main__':
     import os
     now = datetime.datetime.now(ZoneInfo('Asia/Shanghai'))
     try:
-        publish(now.date().isoformat(), now)
+        publish(completed_sessions(now)[-1], now)
     finally:
         path = os.environ.get('GITHUB_STEP_SUMMARY')
         if path and (REPORT/'latest_signals.md').exists():

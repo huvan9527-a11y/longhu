@@ -54,14 +54,21 @@ def export_account(name,result,reconciled_date=None):
     pending.to_csv(target/'next_open_orders.csv',index=False,encoding='utf-8-sig')
     return summary
 
+def completed_sessions(now):
+    """Use only exchange sessions whose daily bars are complete (16:00 CST)."""
+    today=now.date().isoformat()
+    cutoff=now.date() if now.hour>=16 else now.date()-datetime.timedelta(days=1)
+    param=f'sh000001,day,{(now.date()-datetime.timedelta(days=360)).isoformat()},{today},640,'
+    calendar=json.loads(prices.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?'+urllib.parse.urlencode({'param':param})))['data']['sh000001']['day']
+    sessions=sorted({x[0] for x in calendar if x[0]<=cutoff.isoformat()})
+    if not sessions:raise ValueError('Completed-session calendar unavailable')
+    return sessions
+
 def main():
     now=datetime.datetime.now(ZoneInfo('Asia/Shanghai'));today=now.date().isoformat();config=json.loads(pathlib.Path('config.json').read_text());start=config['start_date']
     if config['initial_cash']!=200000:raise ValueError('Engine initial capital must match config')
     ROOT.mkdir(exist_ok=True);prices.ROOT.mkdir(parents=True,exist_ok=True);REPORT.mkdir(exist_ok=True)
-    param=f'sh000001,day,{(now.date()-datetime.timedelta(days=360)).isoformat()},{today},640,'
-    calendar=json.loads(prices.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?'+urllib.parse.urlencode({'param':param})))['data']['sh000001']['day']
-    sessions=sorted({x[0] for x in calendar if x[0]<=today})
-    if not sessions:raise ValueError('Calendar unavailable')
+    sessions=completed_sessions(now)
     live=[d for d in sessions if d>=start]
     latest=sessions[-1]
     # Screening runs separately after close; only the daily-bar ledger waits until evening.
