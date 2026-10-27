@@ -1,2 +1,3 @@
 ﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
-2026-10-26,688836,宇树科技,100432513,有价格涨跌幅限制的连续3个交易日内收盘价格涨幅偏离值累计达到30%的证券,multi_day,1,553323921.87,,553323921.87,0.07692300000000007,True,institution_buy_sum_gt20m
+2026-10-27,002093,国脉科技,100432877,连续三个交易日内，涨幅偏离值累计达到20%的证券,multi_day,1,20018898.0,0.0,20018898.0,0.09986099999999998,True,single_institution_buy_gt20m_sell_zero
+2026-10-27,688306,均普智能,100433501,有价格涨跌幅限制的连续3个交易日内收盘价格涨幅偏离值累计达到30%的证券,multi_day,1,40007220.36,,40007220.36,0.061344000000000065,True,institution_buy_sum_gt20m
