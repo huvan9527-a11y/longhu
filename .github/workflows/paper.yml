@@ -1,4 +1,4 @@
-name: 龙虎榜双模拟仓
+name: 龙虎榜盘后预选
 on:
   schedule:
     # 每天北京时间16:50首轮；17:40备用；19:10/21:10复核披露。
@@ -8,11 +8,11 @@ on:
     - cron: '40 9 * * 1-5'
   workflow_dispatch:
   push:
-    paths: ['*.py', 'tests/**', 'requirements.txt', 'config.json', '.github/workflows/paper.yml']
+    paths: ['preview.py', 'rules.py', 'prices.py', 'tests/**', 'requirements.txt', 'config.json', '.github/workflows/paper.yml']
 permissions:
   contents: write
 concurrency:
-  group: longhu-paper
+  group: longhu-preview
   cancel-in-progress: false
 jobs:
   paper:
@@ -44,20 +44,10 @@ jobs:
             git commit -m 'Update post-close screening [skip ci]'
             git push origin HEAD:main
           fi
-      - name: Update paper accounts
-        run: python run.py
-      - name: Persist immutable data and reports
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data reports
-          if ! git diff --cached --quiet; then
-            git commit -m 'Update paper accounts [skip ci]'
-            git push origin HEAD:main
-          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: paper-ledgers-${{ github.run_id }}
           path: reports/
+
 
