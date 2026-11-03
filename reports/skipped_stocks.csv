@@ -1,23 +1,25 @@
 ﻿date,code,name,reason,stage
-2026-11-02,000010,*ST美丽,ST security excluded,scope
-2026-11-02,002667,*ST威领,ST security excluded,scope
-2026-11-02,200037,深南电B,code_outside_scope,scope
-2026-11-02,300085,银之杰,code_outside_scope,scope
-2026-11-02,300182,捷成股份,code_outside_scope,scope
-2026-11-02,300413,芒果超媒,code_outside_scope,scope
-2026-11-02,300477,ST合纵,code_outside_scope,scope
-2026-11-02,300911,亿田智能,code_outside_scope,scope
-2026-11-02,301052,果麦文化,code_outside_scope,scope
-2026-11-02,301079,邵阳液压,code_outside_scope,scope
-2026-11-02,301218,华是科技,code_outside_scope,scope
-2026-11-02,301428,世纪恒通,code_outside_scope,scope
-2026-11-02,301520,万邦医药,code_outside_scope,scope
-2026-11-02,301569,联亚药业,code_outside_scope,scope
-2026-11-02,600537,*ST亿晶,ST security excluded,scope
-2026-11-02,600734,*ST实达,ST security excluded,scope
-2026-11-02,688066,*ST航图,ST security excluded,scope
-2026-11-02,900905,老凤祥B,code_outside_scope,scope
-2026-11-02,920021,流金科技,code_outside_scope,scope
-2026-11-02,920196,南方乳业,code_outside_scope,scope
-2026-11-02,920201,百瑞吉,code_outside_scope,scope
-2026-11-02,920220,朗信电气,code_outside_scope,scope
+2026-11-03,000610,*ST西旅,ST security excluded,scope
+2026-11-03,200468,宁通信B,code_outside_scope,scope
+2026-11-03,300010,ST豆神,code_outside_scope,scope
+2026-11-03,300426,华智数媒,code_outside_scope,scope
+2026-11-03,300739,明阳电路,code_outside_scope,scope
+2026-11-03,301052,果麦文化,code_outside_scope,scope
+2026-11-03,301080,百普赛斯,code_outside_scope,scope
+2026-11-03,301196,唯科科技,code_outside_scope,scope
+2026-11-03,301209,联合化学,code_outside_scope,scope
+2026-11-03,301262,海看股份,code_outside_scope,scope
+2026-11-03,301311,昆船智能,code_outside_scope,scope
+2026-11-03,301428,世纪恒通,code_outside_scope,scope
+2026-11-03,301513,尚水智能,code_outside_scope,scope
+2026-11-03,301520,万邦医药,code_outside_scope,scope
+2026-11-03,301569,联亚药业,code_outside_scope,scope
+2026-11-03,920045,蘅东光,code_outside_scope,scope
+2026-11-03,920162,莫森泰克,code_outside_scope,scope
+2026-11-03,920196,南方乳业,code_outside_scope,scope
+2026-11-03,920201,百瑞吉,code_outside_scope,scope
+2026-11-03,920627,力王股份,code_outside_scope,scope
+2026-11-03,920779,武汉蓝电,code_outside_scope,scope
+2026-11-03,000417,合百集团,"Unverified seat count: buy ('000417', '100437610', '137001001', '日振幅值达到15%的前5只证券')",seats
+2026-11-03,002086,东方海洋,"Unverified seat count: sell ('002086', '100437586', '137001002001001', '日涨幅偏离值达到7%的前5只证券')",seats
+2026-11-03,002300,太阳电缆,"Unverified seat count: sell ('002300', '100437574', '137001002001001', '日涨幅偏离值达到7%的前5只证券')",seats
