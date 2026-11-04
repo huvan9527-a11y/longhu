@@ -1,25 +1,20 @@
 ﻿date,code,name,reason,stage
-2026-11-03,000610,*ST西旅,ST security excluded,scope
-2026-11-03,200468,宁通信B,code_outside_scope,scope
-2026-11-03,300010,ST豆神,code_outside_scope,scope
-2026-11-03,300426,华智数媒,code_outside_scope,scope
-2026-11-03,300739,明阳电路,code_outside_scope,scope
-2026-11-03,301052,果麦文化,code_outside_scope,scope
-2026-11-03,301080,百普赛斯,code_outside_scope,scope
-2026-11-03,301196,唯科科技,code_outside_scope,scope
-2026-11-03,301209,联合化学,code_outside_scope,scope
-2026-11-03,301262,海看股份,code_outside_scope,scope
-2026-11-03,301311,昆船智能,code_outside_scope,scope
-2026-11-03,301428,世纪恒通,code_outside_scope,scope
-2026-11-03,301513,尚水智能,code_outside_scope,scope
-2026-11-03,301520,万邦医药,code_outside_scope,scope
-2026-11-03,301569,联亚药业,code_outside_scope,scope
-2026-11-03,600537,*ST亿晶,ST security excluded,scope
-2026-11-03,600734,*ST实达,ST security excluded,scope
-2026-11-03,600745,*ST闻泰,ST security excluded,scope
-2026-11-03,920045,蘅东光,code_outside_scope,scope
-2026-11-03,920162,莫森泰克,code_outside_scope,scope
-2026-11-03,920196,南方乳业,code_outside_scope,scope
-2026-11-03,920201,百瑞吉,code_outside_scope,scope
-2026-11-03,920627,力王股份,code_outside_scope,scope
-2026-11-03,920779,武汉蓝电,code_outside_scope,scope
+2026-11-04,300085,银之杰,code_outside_scope,scope
+2026-11-04,300139,晓程科技,code_outside_scope,scope
+2026-11-04,300489,光智科技,code_outside_scope,scope
+2026-11-04,300666,江丰电子,code_outside_scope,scope
+2026-11-04,300788,中信出版,code_outside_scope,scope
+2026-11-04,301052,果麦文化,code_outside_scope,scope
+2026-11-04,301209,联合化学,code_outside_scope,scope
+2026-11-04,301513,尚水智能,code_outside_scope,scope
+2026-11-04,301520,万邦医药,code_outside_scope,scope
+2026-11-04,301569,联亚药业,code_outside_scope,scope
+2026-11-04,301583,托伦斯,code_outside_scope,scope
+2026-11-04,301658,首航新能,code_outside_scope,scope
+2026-11-04,301718,通则康威,code_outside_scope,scope
+2026-11-04,920045,蘅东光,code_outside_scope,scope
+2026-11-04,920157,宇特光电,code_outside_scope,scope
+2026-11-04,920196,南方乳业,code_outside_scope,scope
+2026-11-04,920296,文峰光电,code_outside_scope,scope
+2026-11-04,920298,腾信精密,code_outside_scope,scope
+2026-11-04,920770,艾能聚,code_outside_scope,scope
