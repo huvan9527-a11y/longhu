@@ -1,6 +1,1 @@
-﻿date,code,name,trade_id,disclosure_reason,disclosure_window,institution_buy_rows,institution_buy_sum,institution_sell_within_buy_rows,qualifying_amount,gain_pct,qualifies,reason
-2026-11-04,603236,移远通信,100439192,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,4,767117108.21,,767117108.21,0.09305800000000009,True,institution_buy_sum_gt20m
-2026-11-04,605288,凯迪股份,100439193,非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券,multi_day,3,93414929.97,,93414929.97,0.10001499999999997,True,institution_buy_sum_gt20m
-2026-11-04,688072,拓荆科技,100439100,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,2,581268164.96,,581268164.96,0.200005,True,institution_buy_sum_gt20m
-2026-11-04,688361,中科飞测,100439103,有价格涨跌幅限制的日收盘价格涨幅达到15%的前五只证券,one_day,2,175898181.81,,175898181.81,0.19998099999999996,True,institution_buy_sum_gt20m
-2026-11-04,688596,正帆科技,100439106,有价格涨跌幅限制的连续3个交易日内收盘价格涨幅偏离值累计达到30%的证券,multi_day,2,201872767.07,,201872767.07,0.19999999999999996,True,institution_buy_sum_gt20m
+﻿date,code,qualifying_amount
