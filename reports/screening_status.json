@@ -1,11 +1,11 @@
 {
   "date": "2026-11-05",
-  "checked_at": "2026-11-05T16:50:28.262767+08:00",
+  "checked_at": "2026-11-06T00:52:56.977544+08:00",
   "status": "provisional",
   "price_source": "Eastmoney disclosure close and daily gain",
   "execution": "screening_only_no_orders",
-  "signals": 0,
-  "disclosure_groups": 22,
+  "signals": 1,
+  "disclosure_groups": 50,
   "skipped_stocks": 18,
   "note": "两次原始抓取稳定；异常证券已隔离，不代表全市场已完成发布。"
 }
