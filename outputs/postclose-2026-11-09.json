@@ -1,11 +1,11 @@
 {
   "date": "2026-11-09",
   "kind": "longhu",
-  "status": "waiting",
-  "count": null,
+  "status": "provisional",
+  "count": 0,
   "candidates": [],
-  "note": "当天披露尚未取得或初筛未完成，不能解释为无信号。",
-  "checked_at": "2026-11-09T17:22:37.383453+08:00",
+  "note": "两次原始抓取稳定；异常证券已隔离，不代表全市场已完成发布。；当前披露内初筛，不代表全市场披露完成。",
+  "checked_at": "2026-11-09T17:36:03.268791+08:00",
   "target_first_report": "17:00",
   "phase": "update"
 }

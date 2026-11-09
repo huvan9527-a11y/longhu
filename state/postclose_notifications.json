@@ -59,6 +59,12 @@
         "phase": "update",
         "digest": "731c4945697e19731796b52aa3a6a81e776580e457cfeb267dad08fe2543ee86",
         "delivery": "not_configured"
+      },
+      {
+        "at": "2026-11-09T17:36:03.268791+08:00",
+        "phase": "update",
+        "digest": "202f555c707fd17156a937254e6628cb34d0065b0ef3a24510a3a406234c654e",
+        "delivery": "not_configured"
       }
     ]
   }
