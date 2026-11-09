@@ -50,5 +50,16 @@
         "delivery": "not_configured"
       }
     ]
+  },
+  "2026-11-09": {
+    "accepted": [],
+    "attempts": [
+      {
+        "at": "2026-11-09T17:22:37.383453+08:00",
+        "phase": "update",
+        "digest": "731c4945697e19731796b52aa3a6a81e776580e457cfeb267dad08fe2543ee86",
+        "delivery": "not_configured"
+      }
+    ]
   }
 }
