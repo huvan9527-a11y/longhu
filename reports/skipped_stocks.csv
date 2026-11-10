@@ -1,20 +1,16 @@
 ﻿date,code,name,reason,stage
-2026-11-09,002667,*ST威领,ST security excluded,scope
-2026-11-09,300056,中创环保,code_outside_scope,scope
-2026-11-09,300237,美晨科技,code_outside_scope,scope
-2026-11-09,300825,阿尔特,code_outside_scope,scope
-2026-11-09,301010,晶雪节能,code_outside_scope,scope
-2026-11-09,301052,果麦文化,code_outside_scope,scope
-2026-11-09,301079,邵阳液压,code_outside_scope,scope
-2026-11-09,301226,祥明智能,code_outside_scope,scope
-2026-11-09,301313,凡拓数创,code_outside_scope,scope
-2026-11-09,301697,贝特利,code_outside_scope,scope
-2026-11-09,301718,通则康威,code_outside_scope,scope
-2026-11-09,600289,ST信通,ST security excluded,scope
-2026-11-09,600537,*ST亿晶,ST security excluded,scope
-2026-11-09,603843,*ST正平,ST security excluded,scope
-2026-11-09,920007,酉立智能,code_outside_scope,scope
-2026-11-09,920071,金钛股份,code_outside_scope,scope
-2026-11-09,920085,森峰激光,code_outside_scope,scope
-2026-11-09,920157,宇特光电,code_outside_scope,scope
-2026-11-09,920770,艾能聚,code_outside_scope,scope
+2026-11-10,300052,中青宝,code_outside_scope,scope
+2026-11-10,300118,东方日升,code_outside_scope,scope
+2026-11-10,300264,佳创视讯,code_outside_scope,scope
+2026-11-10,300426,华智数媒,code_outside_scope,scope
+2026-11-10,300556,丝路视觉,code_outside_scope,scope
+2026-11-10,300613,富瀚微,code_outside_scope,scope
+2026-11-10,301313,凡拓数创,code_outside_scope,scope
+2026-11-10,301591,肯特股份,code_outside_scope,scope
+2026-11-10,301697,贝特利,code_outside_scope,scope
+2026-11-10,301718,通则康威,code_outside_scope,scope
+2026-11-10,920071,金钛股份,code_outside_scope,scope
+2026-11-10,920085,森峰激光,code_outside_scope,scope
+2026-11-10,920157,宇特光电,code_outside_scope,scope
+2026-11-10,920202,安达股份,code_outside_scope,scope
+2026-11-10,920770,艾能聚,code_outside_scope,scope
