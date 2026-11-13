@@ -1,7 +1,7 @@
 {
   "start": "2026-10-08",
-  "end": "2026-11-12",
-  "sessions": 26,
+  "end": "2026-11-13",
+  "sessions": 27,
   "signals": 36,
   "entries": 21,
   "closed_trades": 21,
@@ -11,7 +11,7 @@
   "win_rate": 0.38095238095238093,
   "mean_trade_return": -0.0121849751148048,
   "profit_factor": 0.5739186790345671,
-  "average_exposure": 0.44683851048154355,
+  "average_exposure": 0.43028893601926416,
   "final_equity": 182019.42965414946,
   "corporate_action_trades": 0,
   "partial_profit_trades": 4,
