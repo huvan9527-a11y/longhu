@@ -1,11 +1,27 @@
 {
   "date": "2026-11-16",
   "kind": "longhu",
-  "status": "waiting",
-  "count": null,
-  "candidates": [],
-  "note": "当天披露尚未取得或初筛未完成，不能解释为无信号。",
-  "checked_at": "2026-11-16T17:14:34.440568+08:00",
+  "status": "provisional",
+  "count": 1,
+  "candidates": [
+    {
+      "date": "2026-11-16",
+      "code": "603103",
+      "name": "横店影视",
+      "trade_id": "100445522",
+      "disclosure_reason": "非S证券连续三个交易日内收盘价格涨幅偏离值累计达到20%的证券",
+      "disclosure_window": "multi_day",
+      "institution_buy_rows": "1",
+      "institution_buy_sum": "28954581.78",
+      "institution_sell_within_buy_rows": "",
+      "qualifying_amount": "28954581.78",
+      "gain_pct": "0.0875189999999999",
+      "qualifies": "True",
+      "reason": "institution_buy_sum_gt20m"
+    }
+  ],
+  "note": "两次原始抓取稳定；异常证券已隔离，不代表全市场已完成发布。；当前披露内初筛，不代表全市场披露完成。",
+  "checked_at": "2026-11-16T17:35:03.274942+08:00",
   "target_first_report": "17:00",
   "phase": "update"
 }

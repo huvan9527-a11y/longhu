@@ -76,6 +76,12 @@
         "phase": "update",
         "digest": "c9448c7d434c8997eacdbbecfa081377b59dd239a1b35718abbe6c3b7c13d814",
         "delivery": "not_configured"
+      },
+      {
+        "at": "2026-11-16T17:35:03.274942+08:00",
+        "phase": "update",
+        "digest": "79ec8b94205c32ecdfe381fc200ec7a3c232e882648bcb09e9f1917b85a7d684",
+        "delivery": "not_configured"
       }
     ]
   }
