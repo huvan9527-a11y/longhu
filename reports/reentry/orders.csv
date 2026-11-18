@@ -37,3 +37,4 @@
 2026-11-11,2026-11-12,603920,cash_below_minimum_order,,,,False,,
 2026-11-11,2026-11-12,603040,cash_below_minimum_order,,,,False,,
 2026-11-16,2026-11-17,603103,filled_daily_bar_proxy,182019.42965414946,59340.171690799994,0.3260100957548915,False,,
+2026-11-18,,688757,no_next_session_in_window,,,,,,
