@@ -1,1 +1,20 @@
 ﻿date,code,name,reason,stage
+2026-11-19,000010,*ST美丽,ST security excluded,scope
+2026-11-19,200488,ST晨鸣B,code_outside_scope,scope
+2026-11-19,300469,信息发展,code_outside_scope,scope
+2026-11-19,300786,国林科技,code_outside_scope,scope
+2026-11-19,300911,亿田智能,code_outside_scope,scope
+2026-11-19,300991,创益通,code_outside_scope,scope
+2026-11-19,301010,晶雪节能,code_outside_scope,scope
+2026-11-19,301030,*ST仕净,code_outside_scope,scope
+2026-11-19,301052,果麦文化,code_outside_scope,scope
+2026-11-19,301097,天益医疗,code_outside_scope,scope
+2026-11-19,301178,天亿马,code_outside_scope,scope
+2026-11-19,301288,清研环境,code_outside_scope,scope
+2026-11-19,301348,蓝箭电子,code_outside_scope,scope
+2026-11-19,301391,卡莱特,code_outside_scope,scope
+2026-11-19,301660,粤芯半导体,code_outside_scope,scope
+2026-11-19,600180,*ST瑞茂,ST security excluded,scope
+2026-11-19,688033,*ST天宜,ST security excluded,scope
+2026-11-19,920157,宇特光电,code_outside_scope,scope
+2026-11-19,920309,菊乐股份,code_outside_scope,scope
