@@ -1,11 +1,8 @@
 {
-  "date": "2026-11-18",
-  "checked_at": "2026-11-19T03:22:57.874422+08:00",
-  "status": "provisional",
+  "date": "2026-11-19",
+  "checked_at": "2026-11-19T16:55:57.683849+08:00",
+  "status": "waiting_for_disclosure",
   "price_source": "Eastmoney disclosure close and daily gain",
   "execution": "screening_only_no_orders",
-  "signals": 1,
-  "disclosure_groups": 65,
-  "skipped_stocks": 26,
-  "note": "两次原始抓取稳定；异常证券已隔离，不代表全市场已完成发布。"
+  "error": "Disclosure still changing; retry on the next scheduled run"
 }
