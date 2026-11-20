@@ -28,3 +28,5 @@
 2026-11-12,603955,final_exit,close_auction_proxy,1600.0,33.31665,53306.64000000001,7.995996,2026-11-11,next_day_close_exit,,,,,,,
 2026-11-18,603103,next_day_close_exit_blocked_limit_down,,,,,,,,,,,,,,
 2026-11-19,603103,next_day_close_exit_blocked_limit_down,,,,,,,,,,,,,,
+2026-11-20,603103,final_exit,close_auction_proxy,3099.9999999999995,15.07491,46732.22099999999,7.009833149999998,2026-11-17,next_day_close_exit,,,,,,,
+2026-11-20,688757,final_exit,close_auction_proxy,1987.0000000000005,27.332639999999994,54309.95568,8.146493351999998,2026-11-19,next_day_close_exit,,,,,,,
