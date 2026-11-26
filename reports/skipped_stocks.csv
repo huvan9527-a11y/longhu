@@ -1,24 +1,31 @@
 ﻿date,code,name,reason,stage
-2026-11-25,000838,*ST发展,ST security excluded,scope
-2026-11-25,200725,京东方B,code_outside_scope,scope
-2026-11-25,300086,康芝药业,code_outside_scope,scope
-2026-11-25,300290,ST荣科,code_outside_scope,scope
-2026-11-25,300338,*ST开元,code_outside_scope,scope
-2026-11-25,300550,和仁科技,code_outside_scope,scope
-2026-11-25,300703,创源股份,code_outside_scope,scope
-2026-11-25,300844,山水比德,code_outside_scope,scope
-2026-11-25,301052,果麦文化,code_outside_scope,scope
-2026-11-25,301066,万事利,code_outside_scope,scope
-2026-11-25,301209,联合化学,code_outside_scope,scope
-2026-11-25,301211,亨迪药业,code_outside_scope,scope
-2026-11-25,301313,凡拓数创,code_outside_scope,scope
-2026-11-25,301520,万邦医药,code_outside_scope,scope
-2026-11-25,301575,艾芬达,code_outside_scope,scope
-2026-11-25,301697,贝特利,code_outside_scope,scope
-2026-11-25,600180,*ST瑞茂,ST security excluded,scope
-2026-11-25,603359,*ST东珠,ST security excluded,scope
-2026-11-25,688033,*ST天宜,ST security excluded,scope
-2026-11-25,688066,*ST航图,ST security excluded,scope
-2026-11-25,920067,华晟智能,code_outside_scope,scope
-2026-11-25,920157,宇特光电,code_outside_scope,scope
-2026-11-25,920309,菊乐股份,code_outside_scope,scope
+2026-11-26,000820,ST节能,ST security excluded,scope
+2026-11-26,000838,*ST发展,ST security excluded,scope
+2026-11-26,000892,ST欢瑞,ST security excluded,scope
+2026-11-26,002667,*ST威领,ST security excluded,scope
+2026-11-26,002789,*ST建艺,ST security excluded,scope
+2026-11-26,200512,闽灿坤B,code_outside_scope,scope
+2026-11-26,300044,*ST赛为,code_outside_scope,scope
+2026-11-26,300086,康芝药业,code_outside_scope,scope
+2026-11-26,300324,旋极信息,code_outside_scope,scope
+2026-11-26,300469,信息发展,code_outside_scope,scope
+2026-11-26,300670,ST大烨,code_outside_scope,scope
+2026-11-26,301049,超越科技,code_outside_scope,scope
+2026-11-26,301052,果麦文化,code_outside_scope,scope
+2026-11-26,301059,金三江,code_outside_scope,scope
+2026-11-26,301112,信邦智能,code_outside_scope,scope
+2026-11-26,301190,善水科技,code_outside_scope,scope
+2026-11-26,301211,亨迪药业,code_outside_scope,scope
+2026-11-26,301282,金禄电子,code_outside_scope,scope
+2026-11-26,301313,凡拓数创,code_outside_scope,scope
+2026-11-26,301575,艾芬达,code_outside_scope,scope
+2026-11-26,301578,辰奕智能,code_outside_scope,scope
+2026-11-26,301697,贝特利,code_outside_scope,scope
+2026-11-26,600180,*ST瑞茂,ST security excluded,scope
+2026-11-26,600340,*ST华幸,ST security excluded,scope
+2026-11-26,603359,*ST东珠,ST security excluded,scope
+2026-11-26,688066,*ST航图,ST security excluded,scope
+2026-11-26,920067,华晟智能,code_outside_scope,scope
+2026-11-26,920157,宇特光电,code_outside_scope,scope
+2026-11-26,920309,菊乐股份,code_outside_scope,scope
+2026-11-26,920593,鼎智科技,code_outside_scope,scope
